@@ -12,18 +12,14 @@ struct PrideStreakData final {
 
 template<>
 struct matjson::Serialize<PrideStreakData> {
-    static PrideStreakData from_json(const matjson::Value& json) {
-        return PrideStreakData {
-            .name = json["name"].as_string(),
+    static geode::Result<PrideStreakData> fromJson(const matjson::Value& json) {
+        return geode::Ok(PrideStreakData {
+            .name = json["name"].asString().unwrapOr(""),
             .colors = {{
-                json["colors"][0].as<cocos2d::ccColor3B>(),
-                json["colors"][1].as<cocos2d::ccColor3B>(),
-                json["colors"][2].as<cocos2d::ccColor3B>(),
+                json["colors"][0].as<cocos2d::ccColor3B>().unwrapOr(cocos2d::ccColor3B { 0, 0, 0 }),
+                json["colors"][1].as<cocos2d::ccColor3B>().unwrapOr(cocos2d::ccColor3B { 0, 0, 0 }),
+                json["colors"][2].as<cocos2d::ccColor3B>().unwrapOr(cocos2d::ccColor3B { 0, 0, 0 }),
             }}
-        };
-    }
-    
-    static bool is_json(const matjson::Value& json) {
-        return true;
+        });
     }
 };
