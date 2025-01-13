@@ -23,12 +23,14 @@ bool PrideManager::init() {
         "streaks.json"_spr,
         false
     );
-    auto json = file::readJson(path).unwrap();
+    auto json = file::readJson(path).unwrapOr(matjson::Value());
 
     // Read streak data.
-    for (auto streak : json["streaks"].as_array()) {
+    if (!json.contains("streaks") || !json["streaks"].isArray()) return true;
+
+    for (auto streak : json["streaks"].asArray().unwrap()) {
         m_streakData.push_back(
-            streak.as<PrideStreakData>()
+            streak.as<PrideStreakData>().unwrapOr(PrideStreakData())
         );
     }
 

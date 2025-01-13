@@ -31,15 +31,16 @@ class $modify(CCMotionStreak) {
         return true;
     }
 
-// Unfortunately, these methods are too short to hook on android64.
-#ifndef GEODE_IS_ANDROID64
+// Unfortunately, these methods are too short to hook.
+#if !defined(GEODE_IS_ANDROID) && !defined(GEODE_IS_ARM_MAC)
     void resumeStroke() {
         CCMotionStreak::resumeStroke();
 
         m_fields->isChecked = false;
         m_fields->isFlipped = false;
     }
-
+#endif
+#ifndef GEODE_IS_ARM_MAC
     void reset() {
         CCMotionStreak::reset();
 
