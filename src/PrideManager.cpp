@@ -9,7 +9,7 @@ PrideManager* PrideManager::s_sharedManager = nullptr;
 
 PrideManager* PrideManager::sharedManager() {
     if (s_sharedManager == nullptr) {
-        s_sharedManager = new (std::nothrow) PrideManager();
+        s_sharedManager = new PrideManager();
         s_sharedManager->init();
     }
 

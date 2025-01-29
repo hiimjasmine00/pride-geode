@@ -4,7 +4,7 @@
 using namespace geode::prelude;
 
 PridePreviewLayer* PridePreviewLayer::create() {
-    auto ret = new (std::nothrow) PridePreviewLayer();
+    auto ret = new PridePreviewLayer();
 
     if (ret && ret->init()) {
         ret->autorelease();

@@ -7,7 +7,7 @@
 using namespace geode::prelude;
 
 PrideFakePlayer* PrideFakePlayer::create() {
-    auto ret = new (std::nothrow) PrideFakePlayer();
+    auto ret = new PrideFakePlayer();
 
     if (ret && ret->init()) {
         ret->autorelease();

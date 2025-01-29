@@ -6,7 +6,7 @@
 using namespace geode::prelude;
 
 PrideSelectPopup* PrideSelectPopup::create(const Callback& callback) {
-    auto ret = new (std::nothrow) PrideSelectPopup();
+    auto ret = new PrideSelectPopup();
 
     if (ret && ret->init(callback)) {
         ret->autorelease();

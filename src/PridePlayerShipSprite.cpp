@@ -6,7 +6,7 @@
 using namespace geode::prelude;
 
 PridePlayerShipSprite* PridePlayerShipSprite::create(const CreateArg& args) {
-    auto ret = new (std::nothrow) PridePlayerShipSprite();
+    auto ret = new PridePlayerShipSprite();
 
     if (ret && ret->init(args)) {
         ret->autorelease();

@@ -10,7 +10,7 @@ PrideFakeStreak* PrideFakeStreak::create(
     CCTexture2D* texture,
     float speed
 ) {
-    auto ret = new (std::nothrow) PrideFakeStreak();
+    auto ret = new PrideFakeStreak();
 
     if (ret && ret->init(fade, stroke, color, texture, speed)) {
         ret->autorelease();
